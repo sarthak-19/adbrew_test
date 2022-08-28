@@ -1,29 +1,35 @@
 import './App.css';
-import logo from './logo.svg';
+import React, { useState , useRef, useEffect} from 'react'
+import Header from './components/Header';
+import Form from './components/Form';
+import axios from 'axios'
+import {fetchTodos} from './components/backend';
 
+const baseURL = "http://localhost:8000/todos/";
 
-export function App() {
+export default function App() 
+{
+
+  // const [input, setInput] = useState();
+  const [todos, setTodos] = useState([]);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    fetchTodos(setTodos)
+  }, []);
+
   return (
     <div className="App">
-      <div>
-        <h1>List of TODOs</h1>
-        <li>Learn Docker</li>
-        <li>Learn React</li>
-      </div>
-      <div>
+        <div className="list">
+            <Header
+            todos={todos}/>
+        </div>
         <h1>Create a ToDo</h1>
-        <form>
-          <div>
-            <label for="todo">ToDo: </label>
-            <input type="text" />
-          </div>
-          <div style={{"marginTop": "5px"}}>
-            <button>Add ToDo!</button>
-          </div>
-        </form>
-      </div>
+        <div>
+            <Form
+            setTodos={setTodos}
+            inputRef={inputRef}/>
+        </div>
     </div>
   );
 }
-
-export default App;

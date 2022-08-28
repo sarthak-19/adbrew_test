@@ -4,13 +4,16 @@ services:
     build: .
     container_name: api
     command: bash -c "cd /src/rest && python manage.py runserver 0.0.0.0:8000"
+    # command: bash -c "cd /src/rest && python manage.py makemigrations && python manage.py migrate --no-input && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     links:
       - mongo
     volumes:
-      - ${ADBREW_CODEBASE_PATH}/tmp:/tmp
-      - ${ADBREW_CODEBASE_PATH}:/src
+      # - ${ADBREW_CODEBASE_PATH}:/src
+      - /home/sarthak/Documents/Documents/Web Development/Adbrew Test/adb_test/src:/src
+    # - ${ADBREW_CODEBASE_PATH}/tmp:/tmp
+      - /home/sarthak/Documents/Documents/Web Development/Adbrew Test/adb_test/src/tmp:/tmp
 
   app:
     build: .
@@ -19,7 +22,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ${ADBREW_CODEBASE_PATH}:/src
+      - /home/sarthak/Documents/Documents/Web Development/Adbrew Test/adb_test/src:/src
 
   mongo:
     build: .
@@ -31,4 +34,4 @@ services:
       - ${ADBREW_CODEBASE_PATH}/db/:/data/db
     command: /usr/bin/mongod --bind_ip 0.0.0.0
 
-    
+  

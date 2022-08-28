@@ -21,7 +21,7 @@ RUN apt-get install -y mongodb-org
 RUN apt-get install -y yarn
 
 # Install PIP
-RUN easy_install pip
+# RUN easy_install pip
 
 
 ENV ENV_TYPE staging
@@ -30,7 +30,7 @@ ENV MONGO_PORT 27017
 ##########
 
 ENV PYTHONPATH=$PYTHONPATH:/src/
-
+# ENV ADBREW_CODEBASE_PATH="/home/sarthak/Documents/Documents/Web Development/Adbrew Test/adb_test/src"
 # copy the dependencies file to the working directory
 COPY src/requirements.txt .
 
