@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState , useRef, useEffect} from 'react'
 import Header from './components/Header';
 import Form from './components/Form';
-import axios from 'axios'
 import {fetchTodos} from './components/backend';
 
 const baseURL = "http://localhost:8000/todos/";

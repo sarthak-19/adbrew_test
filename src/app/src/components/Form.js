@@ -3,7 +3,7 @@ import {postTodo} from './backend';
 
 // import {v4 as uuidv4} from 'uuid';
 const Form= ({setTodos,inputRef})=> {
-    const handleSetChildren = (e) => {
+    const addToList = (e) => {
         e.preventDefault();
         const addItem = document.getElementById('input_todo').value;
         console.log(addItem)
@@ -35,7 +35,7 @@ const Form= ({setTodos,inputRef})=> {
             />
         </div>
         <div style={{"marginTop": "5px"}}>
-            <button onClick={handleSetChildren}  type="submit" >Add ToDo!</button>
+            <button onClick={addToList}  type="submit" >Add ToDo!</button>
         </div>
     </form>
   )
